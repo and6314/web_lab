@@ -1,0 +1,155 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20.11.2017, 6:31:38
+    Author     : Asus-PC
+*/
+body{
+    font-family: Arial;
+    color: #383838;
+    /*background-color:ghostwhite;*/
+}
+.container{
+    width: 900px;
+    min-height: 850px;
+    background-color:white;
+    margin: auto;
+}
+
+.column100 {
+    float: left;
+    width: 100px;
+}
+
+.column400 {
+    float: left;
+    width: 400px;
+}
+
+.r{
+    margin: 5px;
+    margin-top: 15px;
+    float: right;
+}
+
+
+.column600 {
+    float: left;
+    width: 600px;
+}
+
+.row {
+    width: 900px;
+    position: relative;
+    margin: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+} 
+
+.btn-def{
+    border:none;
+    border-radius: 4px;
+    min-width: 40px;
+    min-height: 25px;
+}
+
+.btn-def:hover{
+    background: #DCDCDC;
+}
+
+.btn-buy{
+    min-width: 100px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 4px;
+    border: none;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    outline: none;
+}
+
+.btn-buy:hover{
+    background: rgb(53, 167, 110); 
+}
+
+img[tabindex="0"] {    
+  cursor: zoom-in;  
+  padding: 10px;
+}  
+
+img[tabindex="0"]:focus {  
+  position: fixed; z-index: 10;
+  top: 0; left: 0; bottom: 0; right: 0;  
+  width: auto; max-width: 100%;  
+  height: auto; max-height: 100%;  
+  margin: auto;  
+  
+  box-shadow: 0 0 200px #000, 0 0 0 1000px rgba(0,0,0,.3);  
+-webkit-box-shadow: 0 0 200px #000, 0 0 0 1000px rgba(0,0,0,.3);  
+-moz-box-shadow: 0 0 200px #000, 0 0 0 1000px rgba(0,0,0,.3);  
+}  
+
+img[tabindex="0"]:focus, /* Привязка на возврат фото в привычное состояние после клика на увеличенное */  
+img[tabindex="0"]:focus ~ * {  
+  cursor: zoom-out;  
+  pointer-events: none;  
+}
+
+#tabs .tab {
+    display: inline-block;
+    background: #E0E0E0  ;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+    z-index:5;
+    border-radius: 3px 3px 0  0;
+}
+
+#tabs .tab:hover{
+    background:  #F0F0F0  ;
+}
+#tabs .whiteborder {
+    background: white;
+    border: 1px solid rgb(204, 204, 204);
+    border-bottom: 1px solid #fff;
+    border-radius: 3px 3px 0  0;
+}
+
+#tabs .whiteborder:hover{
+    background: white;
+} 
+
+#tabs .tabContent {
+    width: 878px;
+    min-height: 550px;
+    border: 1px solid rgb(204, 204, 204);
+    position: relative;
+    top: -1px;
+    z-index:1;
+    padding: 10px;
+    border-radius: 0 0 3px 3px
+}
+#tabs .hide {
+    display: none;
+}
+#tabs .show {
+    display: block;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
