@@ -48,7 +48,7 @@ public class ProductPageServlet extends HttpServlet {
                     res1 = resEn;
                 } else {
                     if ("DE".equals(request.getParameter("lang"))) {
-                        Locale loc3=Locale.GERMAN;
+                        Locale loc3=new Locale ("de", "DE");
                         ResourceBundle resDe = ResourceBundle.getBundle("lang.res",loc3);
                         res1 = resDe;
                     }
@@ -71,10 +71,9 @@ public class ProductPageServlet extends HttpServlet {
             out.println("</div>");
             out.println("<br>");
             out.println("<button type=\"button\" class=\"btn-buy\">"+res1.getString("buy")+"</button><br><br>");
-            out.println("<img src=\"u1.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
-            out.println("<img src=\"u2.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
-            out.println("<img src=\"u3.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
-            out.println("<img src=\"u4.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
+            out.println("<img src=\"img/u0_1.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
+            out.println("<img src=\"img/u0_2.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
+            out.println("<img src=\"img/u0_3.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
             out.println("<br>");
             out.println("<br>");
             out.println("<br>");           
@@ -83,17 +82,17 @@ public class ProductPageServlet extends HttpServlet {
 "        <div class=\"tab\">"+res1.getString("drev")+"</div>\n" +
 "        <div class=\"tab\">"+res1.getString("respl")+"</div>\n");
             out.println("<div class=\"tabContent\">\n");
-            out.println("<p><img align=\"right\" src=\"u1.jpg\"  width=\"400\" height=\"400\"></p>");
+            out.println("<p><img align=\"right\" src=\"img/u0_1.jpg\"  width=\"400\" height=\"400\"></p>");
             out.println("<h2>Bosch TDA 703021T</h2>");
             out.println("<h4>"+res1.getString("ch")+"</h4>");
-            out.println(res1.getString("pw"));
+            out.println(res1.getString("characteristics0"));
             out.println("</div><div class=\"tabContent\">\n");
-            out.println("<p><img align=\"right\" src=\"u1.jpg\"  width=\"200\" height=\"200\"></p>");
+            out.println("<p><img align=\"right\" src=\"img/u0_1.jpg\"  width=\"200\" height=\"200\"></p>");
             out.println("<h2>Bosch TDA 703021T</h2>");
-            out.println(res1.getString("about"));
+            out.println(res1.getString("about0"));
             out.println("</div><div class=\"tabContent\">\n");
             out.println("<h2>Bosch TDA 703021T</h2>");
-            out.println(res1.getString("resp"));
+            out.println(res1.getString("resp0"));
             out.println("</div></div>");
             out.println("<script>var tab; // заголовок вкладки\n" +
 "var tabContent; // блок содержащий контент вкладки\n" +

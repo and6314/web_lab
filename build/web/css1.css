@@ -9,12 +9,13 @@ and open the template in the editor.
 */
 body{
     font-family: Arial;
-    color: #383838;
+    color: #505050;
+    text-decoration: none;
     /*background-color:ghostwhite;*/
 }
 .container{
     width: 900px;
-    min-height: 850px;
+    text-decoration: none;
     background-color:white;
     margin: auto;
 }
@@ -22,6 +23,11 @@ body{
 .column100 {
     float: left;
     width: 100px;
+}
+
+.column150 {
+    float: left;
+    width: 150px;
 }
 
 .column400 {
@@ -40,6 +46,8 @@ body{
     float: left;
     width: 600px;
 }
+
+
 
 .row {
     width: 900px;
@@ -63,6 +71,13 @@ body{
 
 .btn-def:hover{
     background: #DCDCDC;
+}
+
+.btn-big{
+    height: 50px;
+    min-width: 120px;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .btn-buy{
@@ -152,4 +167,5 @@ img[tabindex="0"]:focus ~ * {
     font-weight: 500;
     line-height: 1.1;
     color: inherit;
+    text-decoration: none;
 }
