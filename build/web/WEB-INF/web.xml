@@ -17,8 +17,13 @@
         <param-value>1</param-value> 
     </init-param> 
     </servlet> 
+    <servlet> 
+        <servlet-name>Cart</servlet-name> 
+        <servlet-class>servlets.Cart</servlet-class> 
+    </servlet>
     <servlet-mapping> 
-        <servlet-name>ProductPageServlet</servlet-name> 
-        <url-pattern>/ProductPageServlet</url-pattern> 
+        <servlet-name>Cart</servlet-name> 
+        <url-pattern>/Cart</url-pattern> 
     </servlet-mapping> 
+    
 </web-app>

@@ -30,45 +30,25 @@ public class ProductModel implements Serializable{
         this.manufacturer=manufacturer;
     }
     
-    public void setId(int i) {
-        this.id = i;
-    }
+    public void setId(int i) { this.id = i;}
 
-    public void setCharacteristics(String i) {
-        this.characteristics = i;
-    }
+    public void setCharacteristics(String i) {this.characteristics = i;}
     
-    public void setPrice(int i) {
-        this.price = i;
-    }
+    public void setPrice(int i) {this.price = i;}
 
-    public void setName(String i) {
-        this.name = i;
-    }
+    public void setName(String i) {        this.name = i;    }
 
-    public int getId(){
-        return this.id;
-    }
+    public int getId(){        return this.id;    }
     
-    public int getPrice(){
-        return this.price;
-    }
+    public int getPrice(){        return this.price;    }
     
-    public String getName(){
-        return this.name;
-    }
+    public String getName(){        return this.name;    }
     
     
-    public void setManufacturer(String i) {
-        this.manufacturer = i;
-    }
+    public void setManufacturer(String i) {        this.manufacturer = i;    }
 
-    public String getManufacturer(){
-        return this.manufacturer;
-    }
+    public String getManufacturer(){        return this.manufacturer;    }
    
-    public String getCharacteristics(){
-        return this.characteristics;
-    }
+    public String getCharacteristics(){        return this.characteristics;    }
 }
 

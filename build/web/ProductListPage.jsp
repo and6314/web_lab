@@ -8,6 +8,7 @@
 <%@page import="java.util.ResourceBundle"%>
 <%@page import="Product.ProductList"%>
 <%@page import="Product.ProductModel"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="windows-1251"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,7 @@
         <title>ProductListPage</title>
     </head>
     <body>
-        <jsp:useBean id="prodList" class="Product.ProductList" scope="request" />
+        <jsp:useBean id="modList" class="Product.ModelsList" scope="session" />
         <% 
             Locale locale;
             String lang="RU";
@@ -39,8 +40,11 @@
             else {if (lang.equals("EN")){locale = Locale.ENGLISH;}
             else {locale = new Locale ("de", "DE");;}}
             ResourceBundle res = ResourceBundle.getBundle("/lang/res", locale);
-            prodList.add(new ProductModel(0,160,"name0","characteristics0","Bosch"));
-            prodList.add(new ProductModel(1,40,"name1","characteristics1","Philips"));
+            if (modList.getModelsList().isEmpty()){
+            modList.add(new ProductModel(0,160,"name0","characteristics0","Bosch"));
+            modList.add(new ProductModel(1,40,"name1","characteristics1","Philips"));
+            modList.add(new ProductModel(2,60,"name2","characteristics2","Braun"));
+            }
         %>
         <jsp:include page="header.jsp">
             <jsp:param name="lang" value="<%=lang%>" />
@@ -52,12 +56,13 @@
             <option <%if (m.equals("any")){%> <%= "selected" %> <%}%>value="any"><%=res.getString("any")%></option>
                 <option <%if (m.equals("Philips")){%> <%= "selected" %> <%}%> value="Philips">Philips</option>
                 <option <%if (m.equals("Bosch")){%> <%= "selected" %> <%}%> value="Bosch">Bosch</option>
+                <option <%if (m.equals("Braun")){%> <%= "selected" %> <%}%> value="Braun">Braun</option>
         </select> 
         <br><br>
         <%=res.getString("cost")%>
         <input id="rcost" type="text" onchange="chooseCost()" value="<%=c%>" >
         <br><br>
-        <% for(Product.ProductModel p : prodList.getProductList()){ %>
+        <% for(Product.ProductModel p : modList.getModelsList()){ %>
         <% if((m.equals(p.getManufacturer()))||(m.equals("any"))) {%>
         <% if (p.getPrice()<c) { %>
         <jsp:include page="ProductItem.jsp">
@@ -84,6 +89,24 @@
                 document.cookie = "rcost=" + selectedM;
                 window.location = "ProductListPage.jsp";
             }
+            function addInCart(id) {
+                var count, n_count;
+                count=getCookie("count");
+                if (count==undefined){
+                    document.cookie = "count=" + "0";
+                } else {
+                    n_count=Number(count);
+                    document.cookie = "id" + count+"="+id;
+                    n_count+=1;
+                    document.cookie = "count=" + String(n_count);
+                }
+            }
+            function getCookie(name) {
+                var matches = document.cookie.match(new RegExp(
+                  "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                ));
+                return matches ? decodeURIComponent(matches[1]) : undefined;
+              }
         </script>   
     </body>
 </html>

@@ -41,6 +41,10 @@ body{
     float: right;
 }
 
+.t{
+    float: top;
+    margin-top: 0px;
+}
 
 .column600 {
     float: left;
@@ -94,8 +98,33 @@ body{
     outline: none;
 }
 
+.btn-add-in-cart{
+    min-width: 80px;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    outline: none;
+}
+
+.btn-add-in-cart:hover{
+    background: rgb(53, 167, 110); 
+}
+
+.btn-add-in-cart:active{
+background: rgb(33,147,90);
+}
+
 .btn-buy:hover{
     background: rgb(53, 167, 110); 
+}
+.btn-buy:active{
+background: rgb(33,147,90);
 }
 
 img[tabindex="0"] {    

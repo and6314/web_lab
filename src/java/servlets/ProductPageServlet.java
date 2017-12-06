@@ -59,9 +59,16 @@ public class ProductPageServlet extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet ProductPageServlet</title>"); 
             out.println("<link href=\"css1.css\" rel=\"stylesheet\" type=\"text/css\" />");
-            out.println("<script src=\"Scripts/js1.js\"></script>");
-            out.println("</head>");//<script src="путь_к_файлу_скрипта/script.js"></script>
+            out.println("<script src=\"./Scripts/js1.js\"></script>");
+            out.println("</head>");//<script src="./Scripts/cartjs.js"></script>
             out.println("<body>");
+            out.println("<div class=\"container\">\n" +
+"        <div class=\"row\">\n" +
+"            <div class=\"column150\"><button  class=\"btn-def btn-big\">"+ res1.getString("entrance")+"</button></div>\n" +
+"            <div class=\"column150\"><form  action=\"ProductListPage.jsp\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("catalog")+"</button></form></div>\n" +
+"            <div class=\"column150\"><form  action=\"Cart\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("basket")+"</button></form></div>\n" +
+"            <div class=\"column150\"><button  class=\"btn-def btn-big\">"+ res1.getString("history")+"</button></div>\n" +
+"        </div>");
             out.println("<div class=\"container\">");
             out.println("<div class=\"row\">");
             out.println("<div class=\"column400\"><h1>Bosch TDA 703021T</h1></div>"); 
@@ -70,7 +77,7 @@ public class ProductPageServlet extends HttpServlet {
 "  <input type='submit' class=\"btn-def r\" name=\"lang\"  value=\"RU\"></div></form></div>");
             out.println("</div>");
             out.println("<br>");
-            out.println("<button type=\"button\" class=\"btn-buy\">"+res1.getString("buy")+"</button><br><br>");
+            out.println("<button type=\"button\" class=\"btn-buy\" onclick=\"inCart(0)\" >"+res1.getString("buy")+"</button><br><br>");
             out.println("<img src=\"img/u0_1.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
             out.println("<img src=\"img/u0_2.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
             out.println("<img src=\"img/u0_3.jpg\" width=\"100\" height=\"100\" alt=\"\"  tabindex=\"0\"/>");
@@ -116,6 +123,11 @@ public class ProductPageServlet extends HttpServlet {
 "    }\n" +
 "}\n" +
 "\n" +
+"function inCart(id){"+
+        "addInCart(id);"
+        
+        
+        + "}"   +     
 "function hideTabsContent(a) {\n" +
 "    for (var i=a; i<tabContent.length; i++) {\n" +
 "        tabContent[i].classList.remove('show');\n" +

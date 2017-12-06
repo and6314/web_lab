@@ -12,19 +12,38 @@ import java.io.Serializable;
  * @author Asus-PC
  */
 public class ProductList implements Serializable {
-    private ArrayList<ProductModel> list;
+    private ArrayList<ProductItem> ProductItems;
+    private int totalPrice;
+    
     public ProductList() {
-        list = new ArrayList<>();
+        ProductItems = new ArrayList<>();
+        totalPrice=0;
     }
     
-    public ArrayList<ProductModel> getProductList() {
-        return list;
+
+    public void addProductItem(ProductItem p ){
+        boolean b=true;
+        for (ProductItem i:ProductItems){
+            if (p.getModel()==i.getModel()){
+                int n=i.getNum();
+                n+=1;
+                i.setNum(n);
+                b=false;
+                break;
+            }          
+        }
+        if (b){
+            this.ProductItems.add(p);    
+        }
+        
+        
+        
+        
+        this.totalPrice+=p.getPrice();
     }
     
-    public void add(ProductModel p) {
-        list.add(p);
-    }
+    public int getTotalPrice(){ /*return Integer.toString(this.totalPrice);*/ return this.totalPrice;}
+    public ArrayList<ProductItem> getProductItems(){ return this.ProductItems; }
     
-    
-    
+
 }
