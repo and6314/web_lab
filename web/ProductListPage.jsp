@@ -15,6 +15,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
         <link href="css1.css" rel="stylesheet" type="text/css" />
+        <script src="./Scripts/js1.js"></script>
         <title>ProductListPage</title>
     </head>
     <body>
@@ -50,7 +51,6 @@
             <jsp:param name="lang" value="<%=lang%>" />
         </jsp:include>
         <div class ="container">
-            <br>
         <%=res.getString("manufacturer")%>
         <select id="selectManufacturer" onchange="chooseManufacturer()">
             <option <%if (m.equals("any")){%> <%= "selected" %> <%}%>value="any"><%=res.getString("any")%></option>
@@ -101,12 +101,7 @@
                     document.cookie = "count=" + String(n_count);
                 }
             }
-            function getCookie(name) {
-                var matches = document.cookie.match(new RegExp(
-                  "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-                ));
-                return matches ? decodeURIComponent(matches[1]) : undefined;
-              }
+            
         </script>   
     </body>
 </html>

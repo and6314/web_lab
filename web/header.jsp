@@ -6,12 +6,17 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" import="java.util.Locale,java.util.ResourceBundle" %>
         <%  
             Locale locale;
-            String lang="RU";
+            String lang="RU";String u="";
             Cookie[] cookies = request.getCookies();
             if (cookies != null)
                 for (Cookie cookie : cookies) {
                     if (cookie.getName().equals("lang"))
                         lang = cookie.getValue();
+                    if (cookie.getName().equals("user")) {
+                        u = cookie.getValue();
+                        HttpSession ss = request.getSession(true);
+                        ss.setAttribute("username",u); 
+                    }
                 }   
             if (lang.equals("RU")){locale = new Locale("ru","RU");}
             else {if (lang.equals("EN")){locale = Locale.ENGLISH;}
@@ -20,7 +25,18 @@
         %>    
         <div class="container">
         <div class="row">
-            <div class="column150"><button  class="btn-def btn-big"><%= res.getString("entrance") %></button></div>
+            <div class="column150">
+                <%
+                HttpSession ss = request.getSession();
+                String user = (String)ss.getAttribute("username");
+                if(user == "" || user == null){
+                %>
+                <form  action="login" ><button  class="btn-def btn-big"><%= res.getString("entrance") %></button></form>
+                <%} else {%>
+                <form  action="cabinet.jsp" ><button  class="btn-def btn-big">Кабинет (<%= user%>) </button></form>
+                <%}%>
+            
+            </div>
             <div class="column150"><form  action="ProductListPage.jsp" ><button type="submit" class="btn-def btn-big"><%= res.getString("catalog") %></button></form></div>
             <div class="column150"><form  action="Cart" ><button type="submit" class="btn-def btn-big"><%= res.getString("basket") %></button></form></div>
             <div class="column150"><button  class="btn-def btn-big"><%= res.getString("history") %></button></div>
@@ -31,4 +47,5 @@
             </div>
         </div>
         </div>
+            
         

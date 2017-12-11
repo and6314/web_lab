@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +37,14 @@ public class ProductPageServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
             String s=getInitParameter("act");
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null)
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("deftab"))
+                        s = cookie.getValue();
+                }
             Locale loc2 = new Locale("ru","RU");
             ResourceBundle resRu = ResourceBundle.getBundle("lang.res",loc2);
             ResourceBundle res1 = resRu;    //по умолчанию русский язык
