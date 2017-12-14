@@ -93,7 +93,12 @@
                 var count, n_count;
                 count=getCookie("count");
                 if (count==undefined){
-                    document.cookie = "count=" + "0";
+                    count="0";
+                    n_count=0;
+                    document.cookie = "id" + count+"="+id;
+                    n_count+=1;
+                    document.cookie = "count=" + String(n_count);
+                    window.location = "ProductListPage.jsp";
                 } else {
                     n_count=Number(count);
                     document.cookie = "id" + count+"="+id;

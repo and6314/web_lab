@@ -5,13 +5,15 @@
  */
 package servlets;
 
-import Product.*;
+import Product.ModelsList;
+import Product.ProductItem;
+import Product.ProductList;
+import Product.ProductModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Asus-PC
  */
-@WebServlet(name = "Cart", urlPatterns = {"/Cart"})
-public class Cart extends HttpServlet {
+public class OrderPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +37,10 @@ public class Cart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession ss = request.getSession();
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession ss = request.getSession();
         ProductList p = (ProductList)ss.getAttribute("ProductList");
         ModelsList m = (ModelsList)ss.getAttribute("modList");
         p = new ProductList();
@@ -72,8 +76,10 @@ public class Cart extends HttpServlet {
         }  
         ss.setAttribute("ProductList", p);    
         ss.setAttribute("count", count);  
-        getServletContext().getRequestDispatcher("/cart.jsp").forward(request,response);
-        //ss.setAttribute("locale", lang);
+            
+            
+            getServletContext().getRequestDispatcher("/orderPage.jsp").forward(request,response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

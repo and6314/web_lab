@@ -35,10 +35,6 @@ public class ProductList implements Serializable {
         if (b){
             this.ProductItems.add(p);    
         }
-        
-        
-        
-        
         this.totalPrice+=p.getPrice();
     }
     
