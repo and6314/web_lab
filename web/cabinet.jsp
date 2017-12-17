@@ -43,6 +43,10 @@
             <option <%if (s.equals("1")){%> <%= "selected" %> <%}%> value="1"><%=res.getString("drev")%></option>
             <option <%if (s.equals("2")){%> <%= "selected" %> <%}%> value="2"><%=res.getString("respl")%></option>
         </select> 
+        <br>
+        <a href="history.jsp">История покупок</a>
+        <br>
+        <a href="commentsPage.jsp">Посмотреть/оставить комментарии</a>
         <form  action="exit" ><button type="submit" class="btn-def btn-big">Exit</button></form>   
         </div>
     </body>

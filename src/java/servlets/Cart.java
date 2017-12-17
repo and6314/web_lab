@@ -8,6 +8,7 @@ package servlets;
 import Product.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -36,7 +38,10 @@ public class Cart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Logger logger = Logger.getLogger(Cart.class);
+        logger.info("Пользователель в корзине");
         HttpSession ss = request.getSession();
+        log(new Date().toString()+": пользователь  корзина");
         ProductList p = (ProductList)ss.getAttribute("ProductList");
         ModelsList m = (ModelsList)ss.getAttribute("modList");
         p = new ProductList();
@@ -64,7 +69,7 @@ public class Cart extends HttpServlet {
                     try {
                     id = Integer.parseInt(cookie.getValue());} catch(NumberFormatException e) {id=0;}
                     ProductModel model=m.get_by_id(id);
-                    ProductItem item=new ProductItem(model.getId(),model.getPrice(),res.getString(model.getName()),res.getString(model.getCharacteristics()),model.getManufacturer());
+                    ProductItem item=new ProductItem(model.getId(),model.getPrice(),model.getName(),res.getString(model.getCharacteristics()),model.getManufacturer());
                     p.addProductItem(item);
                     break;
                 }

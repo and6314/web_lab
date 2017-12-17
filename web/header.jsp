@@ -41,7 +41,7 @@
             </div>
             <div class="column150"><form  action="ProductListPage.jsp" ><button type="submit" class="btn-def btn-big"><%= res.getString("catalog") %></button></form></div>
             <div class="column150"><form  action="Cart" ><button type="submit" class="btn-def btn-big"><%= res.getString("basket") %></button></form></div>
-            <div class="column150"><button  class="btn-def btn-big"><%= res.getString("history") %></button></div>
+            <div class="column150"><form  action="history.jsp" ><button type="submit" class="btn-def btn-big"><%= res.getString("history") %></button></form></div>
             <div class="column150">
                 <%
                 if((user != "" && user != null)&&(count!="")){

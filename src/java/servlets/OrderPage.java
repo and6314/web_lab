@@ -68,7 +68,7 @@ public class OrderPage extends HttpServlet {
                     try {
                     id = Integer.parseInt(cookie.getValue());} catch(NumberFormatException e) {id=0;}
                     ProductModel model=m.get_by_id(id);
-                    ProductItem item=new ProductItem(model.getId(),model.getPrice(),res.getString(model.getName()),res.getString(model.getCharacteristics()),model.getManufacturer());
+                    ProductItem item=new ProductItem(model.getId(),model.getPrice(),model.getName(),res.getString(model.getCharacteristics()),model.getManufacturer());
                     p.addProductItem(item);
                     break;
                 }

@@ -17,7 +17,7 @@
         %>    
         <div class="container">
             <div class="row">
-                <div class="column400"><a href="ProductPageServlet"><h3><%=  res.getString(request.getParameter("name"))%>  </h3></a><button onclick="addInCart(<%=request.getParameter("id") %>)" type="button" class="btn-add-in-cart"><%= res.getString("addincart") %></button><%=  res.getString(request.getParameter("characteristics"))%> </div>
+                <div class="column400"><a href="ProductPageServlet"><h3><%=  request.getParameter("name")%>  </h3></a><button onclick="addInCart(<%=request.getParameter("id") %>)" type="button" class="btn-add-in-cart"><%= res.getString("addincart") %></button><%=  res.getString(request.getParameter("characteristics"))%> </div>
             <div class="column150"><img src="img/u<%=request.getParameter("id") %>_1.jpg" width="130" height="130" alt=\"\" /></div>
             </div>
         </div>

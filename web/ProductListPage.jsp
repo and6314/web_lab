@@ -42,9 +42,9 @@
             else {locale = new Locale ("de", "DE");;}}
             ResourceBundle res = ResourceBundle.getBundle("/lang/res", locale);
             if (modList.getModelsList().isEmpty()){
-            modList.add(new ProductModel(0,160,"name0","characteristics0","Bosch"));
-            modList.add(new ProductModel(1,40,"name1","characteristics1","Philips"));
-            modList.add(new ProductModel(2,60,"name2","characteristics2","Braun"));
+            modList.add(new ProductModel(0,160,"Bosch TDA 703021T","characteristics0","Bosch"));
+            modList.add(new ProductModel(1,40,"Philips GC1436","characteristics1","Philips"));
+            modList.add(new ProductModel(2,60,"Braun 4661E-TS705A","characteristics2","Braun"));
             }
         %>
         <jsp:include page="header.jsp">
@@ -92,7 +92,7 @@
             function addInCart(id) {
                 var count, n_count;
                 count=getCookie("count");
-                if (count==undefined){
+                if (count==undefined ){
                     count="0";
                     n_count=0;
                     document.cookie = "id" + count+"="+id;

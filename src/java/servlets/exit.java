@@ -63,7 +63,9 @@ public class exit extends HttpServlet {
             cookie.setMaxAge(0);
             response.addCookie(cookie);
         }
+        log(new Date().toString()+": пользователь " + request.getSession().getAttribute("username") + " вышел");
         request.getSession().invalidate();
+        
         //response.sendRedirect(".");
         response.sendRedirect("ProductListPage.jsp");
     }

@@ -5,10 +5,17 @@
  */
 package servlets;
 
+import Product.ProductItem;
+import Product.ProductList;
+import db.DBhelper;
+import db.Orders;
+import db.Purchases;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,20 +42,38 @@ public class MakeOrder extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession ss = request.getSession();
-            
-            String v=request.getParameter("shopvar");
+            String v=request.getParameter("address");
             String name=(String)ss.getAttribute("username");
             Date d=new Date();
-            
-            out.println(v+"<br>"+name+"<br>"+d);
-            
-            
-            
-            
-            
-            
-            
-            
+            ProductList productlist = (ProductList)ss.getAttribute("ProductList");
+            ArrayList<ProductItem> products=productlist.getProductItems();
+            ArrayList<Purchases> purchases = new ArrayList<Purchases>();
+            for (ProductItem product:products){
+                for (int i=0;i<product.getNum();++i){
+                    Purchases purchase = new Purchases((Integer)0,(Integer)product.getPrice(),(Integer)product.getModel());
+                    purchases.add(purchase);
+                }
+            }
+            Orders order = new Orders(name,v,d);
+            DBhelper db = new DBhelper();
+            db.makeOrder(order, purchases);
+            ss.setAttribute("ProductList", new ProductList());
+            int count = (Integer)ss.getAttribute("count");
+            ss.setAttribute("count", 0);  
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null)
+                for (Cookie cookie : cookies){
+                    if (cookie.getName().equals("count")){
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                    }
+                    if (cookie.getName().contains("id")){
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                    }
+                }     
+            out.println(v+"<br>"+name+"<br>"+d+"<br>succes");
+            out.println("<a href=\"ProductListPage.jsp\">qwe</a>");
             //getServletContext().getRequestDispatcher("/ProductListPage.jsp").forward(request,response);     
         }
     }

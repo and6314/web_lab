@@ -3,34 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/cart.jsp</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/auth/auth-error.jsp</file>
+            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/commentsPage.jsp</file>
             <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/cabinet.jsp</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/img/u0_1.jpg</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/header.jsp</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/login.jsp</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/Product/ProductModel.java</file>
+            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/db/Comments.java</file>
+            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/servlets/MakeOrder.java</file>
+            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/orderPage.jsp</file>
             <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/css1.css</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/servlets/exit.java</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/servlets/ProductPageServlet.java</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/index.html</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/lang/res_en.properties</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/Scripts/ck.js</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/Product/ProductList.java</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/Scripts/js1.js</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/Product/ProductItem.java</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/Product/ModelsList.java</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/lang/res.properties</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/servlets/Cart.java</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/ProductItem.jsp</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/ProductListPage.jsp</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/auth/auth.jsp</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/servlets/login.java</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/Scripts/login.js</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/lang/res_de.properties</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/src/java/lang/res_ru.properties</file>
-            <file>file:/C:/Users/Asus-PC/Documents/GitHub/web_lab/web/Scripts/cartjs.js</file>
         </group>
     </open-files>
 </project-private>

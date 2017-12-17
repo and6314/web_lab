@@ -29,7 +29,10 @@ body{
     float: left;
     width: 150px;
 }
-
+.column300 {
+    float: left;
+    width: 300px;
+}
 .column400 {
     float: left;
     width: 400px;
@@ -79,7 +82,8 @@ body{
 
 .btn-big{
     height: 50px;
-    min-width: 120px;
+    width: 130px;
+    
     font-weight: 400;
     font-size: 18px;
 }
