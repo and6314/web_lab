@@ -11,29 +11,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<c:if test="${empty sessionScope.locale}">
-    <fmt:setLocale value="RU"/>
-</c:if>
-
-<c:if test="${sessionScope.locale eq 'RU'}">
-    <fmt:setLocale value="RU"/>
-</c:if>
-
-<c:if test="${sessionScope.locale eq 'EN'}">
-    <fmt:setLocale value="EN"/>
-</c:if>
-
-<c:if test="${sessionScope.locale eq 'DE'}">
-    <fmt:setLocale value="DE"/>
-</c:if>
-<fmt:setBundle basename="/lang/res"/>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css1.css" rel="stylesheet" type="text/css" />
-        <script src="./Scripts/order.js"></script>
+        <!--<script src="./Scripts/order.js"></script>-->
+        <script src="Scripts/order.js"></script>
         <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"> 
         </script>
         <script src="https://yandex.st/jquery/2.2.3/jquery.min.js"></script>
@@ -42,7 +26,7 @@
     <body>
         <div class="container">
             <jsp:include page="header.jsp"/>
-            <h2>Заказ на имя ${sessionScope.username}</h2>
+            <h2><fmt:message key="orderonname"/> ${sessionScope.username}</h2>
             <form action="MakeOrder" method="GET">
                 <div class="row">
                     <div class="column400">
@@ -54,7 +38,7 @@
                     <input type="text"  name="address" style="width: 200px;" id="suggest" class="input" readonly value="Торжковская улица, 8"/>
                     </div>
                     <div class="column300">
-                    <button type="submit" class="btn-buy" >Оформить заказ</button><br>
+                    <button type="submit" class="btn-buy" ><fmt:message key="makeorder"/> </button><br>
                     </div>
                 </div>
             </form>
@@ -126,30 +110,10 @@ function placemarkClick(e) {
     
     hideError();
 }
-        
-        
-
-        function init1(){ 
-            var myMap, 
-            myPlacemark;
-            myMap = new ymaps.Map("map", {
-                center: [59.76, 30.64],
-                zoom: 11
-            }); 
-            
-            myPlacemark = new ymaps.Placemark([59.76, 30.64], {
-                
-                iconCaption: 'Москва!',
-                balloonContent: 'Столица России'
-            });
-            
-            myMap.geoObjects.add(myPlacemark);
-        }
     </script>
             <!--<script type="text/javascript">
                 ymaps.ready(init);
             </script>-->
-            <br>
         </div>
     </body>
 </html>

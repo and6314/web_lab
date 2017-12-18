@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="windows-1251"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +19,7 @@
     <body onload="ck()">
         <div class="container">
         <jsp:include page="header.jsp"/>
-        <h4>Вы успешно авторизованы</h4>
+        <h4><fmt:message key="successlogin"/></h4>
         </div>
     </body>
 </html>

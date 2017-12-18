@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-function chooseLang(lang) {
-                document.cookie = "lang=" + lang;
-                window.location = "Cart";
-            }
+/*function chooseLang(lang) {
+    document.cookie = "lang=" + lang;
+    //window.location = "Cart";
+    window.location.reload();
+}*/
 
 

@@ -72,9 +72,9 @@ public class MakeOrder extends HttpServlet {
                         response.addCookie(cookie);
                     }
                 }     
-            out.println(v+"<br>"+name+"<br>"+d+"<br>succes");
-            out.println("<a href=\"ProductListPage.jsp\">qwe</a>");
-            //getServletContext().getRequestDispatcher("/ProductListPage.jsp").forward(request,response);     
+            //out.println(v+"<br>"+name+"<br>"+d+"<br>succes");
+            //out.println("<a href=\"ProductListPage.jsp\">qwe</a>");
+            getServletContext().getRequestDispatcher("/ProductListPage.jsp").forward(request,response);     
         }
     }
 

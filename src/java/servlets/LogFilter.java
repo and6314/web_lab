@@ -15,6 +15,10 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -23,7 +27,7 @@ import javax.servlet.ServletResponse;
 public class LogFilter implements Filter {
     
     private static final boolean debug = true;
-
+    private static Logger logger = Logger.getLogger(LogFilter.class);
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
@@ -37,7 +41,19 @@ public class LogFilter implements Filter {
         if (debug) {
             log("LogFilter:DoBeforeProcessing");
         }
-
+        HttpServletRequest httpReq = (HttpServletRequest)request;
+        String uri = httpReq.getRequestURI();
+        Cookie[] cookies = httpReq.getCookies();
+        String lang="RU";
+        if (cookies != null)
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("lang"))
+                    lang = cookie.getValue();
+            } 
+        HttpSession ss = httpReq.getSession();
+        String user = (String)ss.getAttribute("username");
+        if (user == null || user==" ") user="гость";
+        logger.info(user + ": "+uri);
         // Write code here to process the request and/or response before
         // the rest of the filter chain is invoked.
         // For example, a logging filter might log items on the request object,

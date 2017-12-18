@@ -54,7 +54,11 @@ body{
     width: 600px;
 }
 
-
+.hr {
+    float: left;
+    width: 663px;
+    color: lightgray; 
+}
 
 .row {
     width: 900px;
@@ -102,6 +106,25 @@ body{
     outline: none;
 }
 
+.btn-exit{
+    min-width: 100px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 4px;
+    border: none;
+    background: rgb(232,95,76);
+    box-shadow: 0 -3px rgb(212,75,56) inset;
+    outline: none;
+}
+.btn-exit:hover{
+    background: rgb(212,75,56); 
+}
+.btn-exit:active{
+background: rgb(152,15,0);
+}
 .btn-add-in-cart{
     min-width: 80px;
     font-size: 14px;

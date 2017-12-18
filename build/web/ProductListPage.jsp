@@ -47,9 +47,7 @@
             modList.add(new ProductModel(2,60,"Braun 4661E-TS705A","characteristics2","Braun"));
             }
         %>
-        <jsp:include page="header.jsp">
-            <jsp:param name="lang" value="<%=lang%>" />
-        </jsp:include>
+        <jsp:include page="header.jsp"/>
         <div class ="container">
         <%=res.getString("manufacturer")%>
         <select id="selectManufacturer" onchange="chooseManufacturer()">
@@ -75,10 +73,10 @@
         <% }}} %>
         </div>
         <script>
-            function chooseLang(lang) {
+            /*function chooseLang(lang) {
                 document.cookie = "lang=" + lang;
                 window.location = "ProductListPage.jsp";
-            }
+            }*/
             function chooseManufacturer() {
                 var selectedM = document.getElementById("selectManufacturer").value;
                 document.cookie = "Manufacturer=" + selectedM;

@@ -19,8 +19,8 @@ function enter() {
     }
 } 
 
-function chooseLang(lang) {
-    document.cookie = "lang=" + lang;
-    window.location = "login";
+function error() {
+    var user = "";
+    document.cookie = "user=" + user;
 }
 

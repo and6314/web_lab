@@ -14,25 +14,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="windows-1251"%>
 <!DOCTYPE html>
-
-<c:if test="${empty sessionScope.locale}">
-    <fmt:setLocale value="RU"/>
-</c:if>
-
-<c:if test="${sessionScope.locale eq 'RU'}">
-    <fmt:setLocale value="RU"/>
-</c:if>
-
-<c:if test="${sessionScope.locale eq 'EN'}">
-    <fmt:setLocale value="EN"/>
-</c:if>
-
-<c:if test="${sessionScope.locale eq 'DE'}">
-    <fmt:setLocale value="DE"/>
-</c:if>
-<fmt:setBundle basename="/lang/res"/>
-
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
@@ -41,10 +22,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="header.jsp">
-            <jsp:param name="page" value="Cart" />
-        </jsp:include>
+        <jsp:include page="header.jsp"/>
         <div class ="container">
+            <c:if test="${not empty sessionScope.ProductList.getProductItems()}">
+                <c:if test="${not empty sessionScope.username}">
+                    <form  action="OrderPage" ><button type="submit" class="btn-buy">Заказ</button></form>
+                </c:if>
+                <c:if test="${empty sessionScope.username}">
+                    <form  action="login" ><button type="submit" class="btn-buy">Заказ</button></form>
+                </c:if>    
+            </c:if>
             <br>
             <fmt:message key="goodsincart"/> : ${sessionScope.count}
             <br>
