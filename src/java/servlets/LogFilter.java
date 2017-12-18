@@ -41,39 +41,61 @@ public class LogFilter implements Filter {
         if (debug) {
             log("LogFilter:DoBeforeProcessing");
         }
+        
         HttpServletRequest httpReq = (HttpServletRequest)request;
         String uri = httpReq.getRequestURI();
+        String msg=uri + " - ";
         Cookie[] cookies = httpReq.getCookies();
-        String lang="RU";
+        String lang="RU";String m="any";String c="100000";
         if (cookies != null)
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("lang"))
                     lang = cookie.getValue();
+                if (cookie.getName().equals("Manufacturer"))
+                        m = cookie.getValue();
+                    if (cookie.getName().equals("rcost"))
+                        c = cookie.getValue();
             } 
         HttpSession ss = httpReq.getSession();
         String user = (String)ss.getAttribute("username");
-        if (user == null || user==" ") user="гость";
-        logger.info(user + ": "+uri);
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-        /*
-	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
-	    int n = values.length;
-	    StringBuffer buf = new StringBuffer();
-	    buf.append(name);
-	    buf.append("=");
-	    for(int i=0; i < n; i++) {
-	        buf.append(values[i]);
-	        if (i < n-1)
-	            buf.append(",");
-	    }
-	    log(buf.toString());
-	}
-         */
+        if ((user == null)|| (user=="" || user==" ")) user="гость";
+        if (uri.contains("ProductListPage")){
+            msg += user + " просматривает список товаров" ;
+            if (!m.equals("any")){
+                msg+=", производителя " + m;
+            }
+            if (!c.equals("100000")){
+                msg+=", стоимостью не более " + c + " $";
+            }
+        }
+        if (uri.contains("ProductPageServlet")){
+            msg += user + " просматривает карточку продукта" ;
+        }
+        if (uri.contains("cabinet")){
+            msg += user + " перешел в личный кабинет" ;
+        }
+        if (uri.contains("AddComment")){
+            msg += user + " добавил комментарий" ;
+        }
+        if (uri.contains("exit")){
+            msg += user + " вышел" ;
+        }
+        if (uri.contains("login")){
+            msg += user + " авторизовался" ;
+        }
+        if (uri.contains("Cart")){
+            msg += user + " перешел в корзину" ;
+        }
+        if (uri.contains("history")){
+            msg += user + " просматривает историю покупок" ;
+        }
+        if (uri.contains("OrderPage")){
+            msg += user + " оформляет заказ" ;
+        }
+        if (uri.contains("MakeOrder")){
+            msg += user + " сделал заказ" ;
+        }
+        logger.info(msg);
     }    
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
@@ -81,24 +103,6 @@ public class LogFilter implements Filter {
         if (debug) {
             log("LogFilter:DoAfterProcessing");
         }
-
-        // Write code here to process the request and/or response after
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log the attributes on the
-        // request object after the request has been processed. 
-        /*
-	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    Object value = request.getAttribute(name);
-	    log("attribute: " + name + "=" + value.toString());
-
-	}
-         */
-        // For example, a filter might append something to the response.
-        /*
-	PrintWriter respOut = new PrintWriter(response.getWriter());
-	respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
-         */
     }
 
     /**

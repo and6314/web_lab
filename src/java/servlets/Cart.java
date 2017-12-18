@@ -38,8 +38,6 @@ public class Cart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Logger logger = Logger.getLogger(Cart.class);
-        logger.info("Пользователель в корзине");
         HttpSession ss = request.getSession();
         log(new Date().toString()+": пользователь  корзина");
         ProductList p = (ProductList)ss.getAttribute("ProductList");

@@ -73,10 +73,6 @@
         <% }}} %>
         </div>
         <script>
-            /*function chooseLang(lang) {
-                document.cookie = "lang=" + lang;
-                window.location = "ProductListPage.jsp";
-            }*/
             function chooseManufacturer() {
                 var selectedM = document.getElementById("selectManufacturer").value;
                 document.cookie = "Manufacturer=" + selectedM;
@@ -104,7 +100,6 @@
                     document.cookie = "count=" + String(n_count);
                 }
             }
-            
         </script>   
     </body>
 </html>
