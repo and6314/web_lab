@@ -33,26 +33,30 @@ function showTabsContent(b){
         tabContent[b].classList.add('show');
     }
 } 
-
-function addInCart(id) {
-                var count, n_count;
-                count=getCookie("count");
-                if (count==undefined){
-                    document.cookie = "count=" + "0";
-                } else {
-                    n_count=Number(count);
-                    document.cookie = "id" + count+"="+id;
-                    n_count+=1;
-                    document.cookie = "count=" + String(n_count);
-                }
-            }
-            function getCookie(name) {
+function getCookie(name) {
                 var matches = document.cookie.match(new RegExp(
                   "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
                 ));
                 return matches ? decodeURIComponent(matches[1]) : undefined;
               }
-              
+function addInCart(id) {
+                var count, n_count;
+                count=getCookie("count");
+                if (count==undefined ){
+                    count="0";
+                    n_count=0;
+                    document.cookie = "id" + count+"="+id;
+                    n_count+=1;
+                    document.cookie = "count=" + String(n_count);
+                    window.location = "Cart";
+                } else {
+                    n_count=Number(count);
+                    document.cookie = "id" + count+"="+id;
+                    n_count+=1;
+                    document.cookie = "count=" + String(n_count);
+                    window.location = "Cart";
+                }
+            }         
 function selectdeftab() {
                 var selectedM = document.getElementById("selectdeftab").value;
                 document.cookie = "deftab=" + selectedM;

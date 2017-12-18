@@ -15,6 +15,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,12 +39,16 @@ public class ProductPageServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String s=getInitParameter("act");
+            String s=getInitParameter("act");String lang="RU";String count="";
             Cookie[] cookies = request.getCookies();
             if (cookies != null)
                 for (Cookie cookie : cookies) {
                     if (cookie.getName().equals("deftab"))
                         s = cookie.getValue();
+                    if (cookie.getName().equals("count"))
+                        count = cookie.getValue();
+                    if (cookie.getName().equals("lang"))
+                        lang = cookie.getValue();
                 }
             Locale loc2 = new Locale("ru","RU");
             ResourceBundle resRu = ResourceBundle.getBundle("lang.res",loc2);
@@ -54,35 +59,55 @@ public class ProductPageServlet extends HttpServlet {
                     Locale loc1 = Locale.ENGLISH;
                     ResourceBundle resEn = ResourceBundle.getBundle("lang.res",loc1);
                     res1 = resEn;
+                    lang="EN";
                 } else {
                     if ("DE".equals(request.getParameter("lang"))) {
                         Locale loc3=new Locale ("de", "DE");
                         ResourceBundle resDe = ResourceBundle.getBundle("lang.res",loc3);
                         res1 = resDe;
+                        lang="DE";
                     }
                 }
             }
+            HttpSession ss = request.getSession();
+            Cookie l = new Cookie("lang", lang);
+            response.addCookie(l);
+            ss.setAttribute("lang", lang);
+            
+            String user = (String)ss.getAttribute("username");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet ProductPageServlet</title>"); 
             out.println("<link href=\"css1.css\" rel=\"stylesheet\" type=\"text/css\" />");
             out.println("<script src=\"./Scripts/js1.js\"></script>");
-            out.println("</head>");//<script src="./Scripts/cartjs.js"></script>
+            out.println("</head>");//if(user == "" || user == null)
             out.println("<body>");
             out.println("<div class=\"container\">\n" +
-"        <div class=\"row\">\n" +
-"            <div class=\"column150\"><button  class=\"btn-def btn-big\">"+ res1.getString("entrance")+"</button></div>\n" +
-"            <div class=\"column150\"><form  action=\"ProductListPage.jsp\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("catalog")+"</button></form></div>\n" +
-"            <div class=\"column150\"><form  action=\"Cart\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("basket")+"</button></form></div>\n" +
-"            <div class=\"column150\"><button  class=\"btn-def btn-big\">"+ res1.getString("history")+"</button></div>\n" +
-"        </div>");
+"        <div class=\"row\">\n") ;
+            if(user == "" || user == null){
+                out.println("<div class=\"column150\"><form  action=\"login\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("entrance")+"</button></form></div>\n" );
+            } else {
+                out.println("<div class=\"column150\"><form  action=\"cabinet.jsp\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("cabinet") + " (" + user + ")</button></form></div>\n" );
+            }
+            out.println("<div class=\"column150\"><form  action=\"ProductListPage.jsp\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("catalog")+"</button></form></div>\n" +
+"            <div class=\"column150\"><form  action=\"Cart\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("basket")+"</button></form></div>\n");
+            if(user == "" || user == null){
+            out.println("<div class=\"column150\"><form  action=\"login\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("history")+"</button></form></div>\n");
+            } else {
+            out.println("<div class=\"column150\"><form  action=\"history.jsp\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("history")+"</button></form></div>\n");    
+            }
+            if((user != "" && user != null)&&(count!="")){
+            out.println("<div class=\"column150\"><form  action=\"OrderPage\" ><button type=\"submit\" class=\"btn-def btn-big\">"+ res1.getString("order")+"</button></form></div>\n");
+            }
+            out.println("</div>");
+            
             out.println("<div class=\"container\">");
             out.println("<div class=\"row\">");
             out.println("<div class=\"column400\"><h1>Bosch TDA 703021T</h1></div>"); 
-            out.println("<div class=\"column400 r\"><form action=ProductPageServlet method=\"get\"><div> <input type='submit' class=\"btn-def r\" name=\"lang\"  value=\"DE\">\n" +
-"  <input type='submit' class=\"btn-def r\" name=\"lang\"  value=\"EN\">\n" +
-"  <input type='submit' class=\"btn-def r\" name=\"lang\"  value=\"RU\"></div></form></div>");
+            out.println("<div class=\"column400 r\"><form action=ProductPageServlet method=\"get\"><div> <input type='submit' class=\"btn-def\" name=\"lang\"  value=\"RU\">\n" +
+"  <input type='submit' class=\"btn-def\" name=\"lang\"  value=\"EN\">\n" +
+"  <input type='submit' class=\"btn-def\" name=\"lang\"  value=\"DE\"></div></form></div>");
             out.println("</div>");
             out.println("<br>");
             out.println("<button type=\"button\" class=\"btn-buy\" onclick=\"inCart(0)\" >"+res1.getString("buy")+"</button><br><br>");

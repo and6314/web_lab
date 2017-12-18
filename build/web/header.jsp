@@ -33,7 +33,6 @@
         <div class="row">
             <div class="column150">
                 <%
-                
                 String user = (String)ss.getAttribute("username");
                 if(user == "" || user == null){
                 %>
